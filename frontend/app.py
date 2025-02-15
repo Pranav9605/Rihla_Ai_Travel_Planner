@@ -47,8 +47,8 @@ if submitted:
     with st.spinner("Fetching travel recommendations and weather forecast..."):
         # Use ThreadPoolExecutor to run both requests concurrently.
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            future_travel = executor.submit(requests.post, "http://localhost:8000/search/", json=query_data)
-            future_forecast = executor.submit(requests.post, "http://localhost:8000/forecast/", json=forecast_payload)
+            future_travel = executor.submit(requests.post, "http://buzzbrewsandchills.shop/search/", json=query_data)
+            future_forecast = executor.submit(requests.post, "http://buzzbrewsandchills.shop/forecast/", json=forecast_payload)
             
             travel_response = future_travel.result()
             forecast_response = future_forecast.result()
