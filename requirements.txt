@@ -1,0 +1,10 @@
+fastapi 
+uvicorn 
+openai 
+langchain
+chromadb 
+spacy
+requests
+prophet
+python-decouple
+google-generativeai

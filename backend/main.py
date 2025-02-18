@@ -3,13 +3,32 @@ from pydantic import BaseModel
 from typing import List, Dict, Any
 import logging
 import spacy
-from backend.weather_forecast import router as weather_router
+from weather_forecast import router as weather_router
 # Import your LLM integration function and image scraper module.
-from backend.llm_integration import generate_response
-from backend.duckduckgo_scraper import scrape_duckduckgo_image
+from llm_integration import generate_response
+from duckduckgo_scraper import scrape_duckduckgo_image
 
 # Configure basic logging.
 logging.basicConfig(level=logging.DEBUG)
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="RihlaAi Travel & Weather Planner API")
+
+
+origins = [
+    "http://localhost:8501",
+    "localhost:8501"
+] # React app's origin
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 
 # Pydantic model for the travel query input.
 class TravelQuery(BaseModel):
@@ -79,7 +98,7 @@ def search(travel_query: TravelQuery):
     try:
         travel_data = travel_query.dict()
         logging.debug("Received travel data: %s", travel_data)
-        
+        print(travel_data,'_____-------___------__->travel data')
         # Generate itinerary text using your LLM integration.
         itinerary_text = generate_response(travel_data)
         logging.debug("Generated itinerary text: %s", itinerary_text)
@@ -117,6 +136,7 @@ def search(travel_query: TravelQuery):
         
         # Dynamically format the itinerary text to include images and links.
         rendered_html = dynamic_format_itinerary(itinerary_text, augmented_items)
+        print(rendered_html,'-___----____---->rendered html')
         logging.debug("Rendered HTML output: %s", rendered_html)
         
         return {

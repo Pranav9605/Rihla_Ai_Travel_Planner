@@ -1,6 +1,6 @@
 import google.generativeai as genai
-from backend.retrieval import retrieve_relevant_docs
-from backend.config import GEMINI_API_KEY
+from retrieval import retrieve_relevant_docs
+from config import GEMINI_API_KEY
 import logging
 import traceback
 

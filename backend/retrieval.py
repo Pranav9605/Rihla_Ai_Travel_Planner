@@ -1,5 +1,5 @@
-from backend.vector_db import collection  # Import the Chroma DB collection
-from backend.embedding import get_embedding  # Use the API-based embedding function
+from vector_db import collection  # Import the Chroma DB collection
+from embedding import get_embedding  # Use the API-based embedding function
 
 def retrieve_relevant_docs(query: str, top_k: int = 5):
     """

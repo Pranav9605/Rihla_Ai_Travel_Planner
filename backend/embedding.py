@@ -1,5 +1,5 @@
 import openai
-from backend.config import OPENAI_API_KEY
+from config import OPENAI_API_KEY
 
 # Set up the OpenAI API key
 openai.api_key = OPENAI_API_KEY

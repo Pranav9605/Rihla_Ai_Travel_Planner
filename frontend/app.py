@@ -42,15 +42,21 @@ if submitted:
     forecast_payload = {
         "target_date": travel_date_str,
         "threshold": 25.0  # Predefined temperature threshold.
-    }
+    }   
     
     with st.spinner("Fetching travel recommendations and weather forecast..."):
         # Use ThreadPoolExecutor to run both requests concurrently.
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            future_travel = executor.submit(requests.post, "http://localhost:8000/search/", json=query_data)
-            future_forecast = executor.submit(requests.post, "http://localhost:8000/forecast/", json=forecast_payload)
+            print(query_data,'------->data printed')
+            # future_travel = executor.submit(requests.post, "http://buzzbrewsandchills.shop/search/", json=query_data)
             
+            # future_forecast = executor.submit(requests.post, "http://buzzbrewsandchills.shop/forecast/", json=forecast_payload)
+            future_travel = executor.submit(requests.post, "http://localhost:8000/search/", json=query_data)
+            print(future_travel,'_____---------->Future Travel')
+            future_forecast = executor.submit(requests.post, "http://localhost:8000/forecast/", json=forecast_payload)
+            print(forecast_payload,'----------------- ---->forecast_payload')
             travel_response = future_travel.result()
+            print(travel_response,'-------------->travelrespn')
             forecast_response = future_forecast.result()
         
         # Process travel recommendations response.
