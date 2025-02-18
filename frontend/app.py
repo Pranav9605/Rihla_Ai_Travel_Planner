@@ -51,9 +51,9 @@ if submitted:
             # future_travel = executor.submit(requests.post, "http://buzzbrewsandchills.shop/search/", json=query_data)
             
             # future_forecast = executor.submit(requests.post, "http://buzzbrewsandchills.shop/forecast/", json=forecast_payload)
-            future_travel = executor.submit(requests.post, "http://localhost:8000/search/", json=query_data)
+            future_travel = executor.submit(requests.post, "http://buzzbrewsandchills.shop/search/", json=query_data)
             print(future_travel,'_____---------->Future Travel')
-            future_forecast = executor.submit(requests.post, "http://localhost:8000/forecast/", json=forecast_payload)
+            future_forecast = executor.submit(requests.post, "http://buzzbrewsandchills.shop/forecast/", json=forecast_payload)
             print(forecast_payload,'----------------- ---->forecast_payload')
             travel_response = future_travel.result()
             print(travel_response,'-------------->travelrespn')
