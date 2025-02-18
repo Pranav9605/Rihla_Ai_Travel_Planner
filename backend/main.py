@@ -16,14 +16,9 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="RihlaAi Travel & Weather Planner API")
 
 
-origins = [
-    "http://localhost:8501",
-    "localhost:8501"
-] # React app's origin
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods
     allow_headers=["*"],  # Allows all headers
@@ -86,8 +81,7 @@ def dynamic_format_itinerary(plan_text: str, augmented_items: List[Dict[str, str
     # Join with double newlines for clear Markdown separation.
     return "\n\n".join(formatted_lines)
 
-app = FastAPI()
-app.include_router(weather_router)
+# app.include_router(weather_router)
 
 @app.get("/")
 def home():
