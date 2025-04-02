@@ -68,9 +68,9 @@ if submitted:
             st.error(f"Travel Recommendations Error: Received status code {travel_response.status_code}\n{travel_response.text}")
         
         # Process weather forecast response.
-        if forecast_response.status_code == 200:
-            forecast_data = forecast_response.json()
-            st.subheader("Weather Forecast:")
-            st.write(forecast_data.get("forecast", "No forecast returned."))
-        else:
-            st.error(f"Weather Forecast Error: Received status code {forecast_response.status_code}\n{forecast_response.text}")
+        # if forecast_response.status_code == 200:
+        #     forecast_data = forecast_response.json()
+        #     st.subheader("Weather Forecast:")
+        #     st.write(forecast_data.get("forecast", "No forecast returned."))
+        # else:
+        #     st.error(f"Weather Forecast Error: Received status code {forecast_response.status_code}\n{forecast_response.text}")
